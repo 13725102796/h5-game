@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Generator" content="EditPlus®">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<title>捕鱼达人</title>
+<script src='plug-in/jquery-2.2.0.min.js'></script>
+</head>
+<body>
+<!-- <div class="bb" style="width:200px;height:20px;line-height:20px;font-size:12px;background:#000;text-align:center;color:#fff;position:fixed;right:0;top:0;z-index:999999"></div> -->
+<div class='game-wrapper'>
+	<div id='game-fishMan'>
+		<div class='fishMan-fish'></div>
+		<div class='fishMan-basic'>
+			<div class='basic-battery'></div>
+			<div class='basic-plus' data-i="1"></div>
+			<div class='basic-add' data-i="0"></div>
+			<div class='basic-score'>200</div>
+			<div class="basic-line-box">
+				<div class='basic-line'></div>
+			</div>
+		</div>
+		<div class="fishMan-info">鱼群来袭...</div>
+		<div class='fishMan-catchAll'></div>
+		<audio id = 'audio-bg' src="http://m.web-jackiee.com/templets/blog/music/fishCatch/bgsound.mp3" loop='loop'></audio>
+		<audio id = 'audio-bullet' src="http://m.web-jackiee.com/templets/blog/music/fishCatch/bullet.mp3"></audio>
+		<audio id = 'audio-glod' src="http://m.web-jackiee.com/templets/blog/music/fishCatch/gold.mp3"></audio>
+	</div>
+</div>
+<script src='./js/data.js'></script>
+<script src="./js/index.js"></script>
+</body>
+</html>

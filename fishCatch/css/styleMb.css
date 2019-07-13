@@ -1,0 +1,342 @@
+*{
+	padding:0;
+	margin:0;
+}
+html, body{
+	height:100%;
+	moz-user-select: -moz-none;
+	-moz-user-select: none;
+	-o-user-select:none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	font-family: 'Microsoft YaHei';
+}
+/* #loading-mask {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #437aab;
+	background-size: cover;
+	transform: translate3d(0, 0, 0);
+	background-size: cover;
+	background-image: url(../image/loading.jpg);
+	z-index: 999;
+} */
+/* #loading-mask p {
+	position: absolute;
+	width: 100%;
+	top: 10%;
+	left: 0;
+	font-size: 30px;
+	text-align: center;
+	color: #fff;
+} */
+/* #loading-mask .start-btn {
+	position: absolute;
+	width: 120px;
+	height: 40px;
+	left: 50%;
+	bottom: 10%;
+	margin-left: -60px;
+	background: rgba(0, 0, 0, .6);
+	border: 3px solid #09314a;
+	text-align: center;
+	line-height: 40px;
+	color: #ffffff;
+	border-radius: 3px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	font-family: Arial;
+} */
+.game-wrapper{
+	width:100%;
+	height:100%;
+}
+#game-fishMan{
+	position:relative;
+	background-image:url('../image/bg.jpg');
+	overflow:hidden;
+	background-repeat: no-repeat;
+	cursor:url('../image/crosshair.ico'),default;
+	background-color: blue;
+}
+#game-fishMan .fishMan-basic {
+	position: absolute;
+	width:100%;
+	background:url('../image/basic.png');
+	background-size: 100%;
+	bottom: 0;
+	left: 0;
+	z-index: 99;
+	transform: translate3D(0, 0, 0);
+}
+#game-fishMan .fishMan-basic .basic-line-box {
+	position:absolute;
+	width: 28%;
+	bottom: 4px;
+	left: 71%;
+}
+#game-fishMan .fishMan-basic .basic-line{
+	width: 0;
+	border-radius:30px;
+	color:#141414;
+  font-size:12px;
+  line-height:19px;
+  text-align:center;
+  letter-spacing:12px;
+  font-weight:bold;
+	background:url('../image/energy-bar.png') no-repeat;
+	transition:.5s;
+}
+#game-fishMan .fishMan-basic .basic-line.active{
+	animation:line 1s infinite alternate;
+}
+@keyframes line{
+	form{
+		box-shadow:0 0 20px 3px rgba(255,255,255,.5);
+	}to{
+		box-shadow:0 0 32px 6px rgba(255,255,255,.9);
+	}
+}
+#game-fishMan .fishMan-catchAll{
+	position:absolute;
+	width:1024px;
+	height:768px;
+	top:0;
+	left:0;
+	background:url('../image/catch-all.png') 0 -128px no-repeat;
+	z-index:9999;
+	transform:scale(0);
+	opacity:0;
+	transition:transform 1s;
+}
+#game-fishMan .fishMan-catchAll.active{
+	transform:scale(1);
+	opacity:1;
+}
+#game-fishMan .fishMan-catchAll.end{
+	transform:matrix(0,1,1,0,-250,350);
+	opacity:0;
+}
+#game-fishMan .fishMan-basic .basic-battery{
+	position:absolute;
+	width:74px;
+	height:74px;
+	left: 50%;
+	top:0;
+	overflow:hidden;
+	background-../image:url('../image/cannon1.png');
+	background-position:0 0;
+	-webkit-transition:.3s;
+	-moz-transition:.3s;
+	-o-transition:.3s;
+	-ms-transition:.3s;
+	transition:.3s;
+}
+#game-fishMan .fishMan-basic .basic-battery.active{
+	animation:battery .5s steps(4);
+}
+@keyframes battery{
+	form{
+		background-position:0 0;
+	}
+	to{
+		background-position:0 100%;
+	}
+}
+#game-fishMan .fishMan-basic .basic-plus{
+	position:absolute;
+	width:42px;
+	height:46px;
+	left: 43%;
+	bottom:-3px;
+	background:url('../image/btnPlus-1.png') 0 100% no-repeat;
+	cursor:pointer;
+}
+#game-fishMan .fishMan-basic .basic-plus.active{
+	background:url('../image/btnPlus-2.png') 0 100% no-repeat;
+}
+#game-fishMan .fishMan-basic .basic-add{
+	position:absolute;
+	width:42px;
+	height:46px;
+	left: 63%;
+	bottom:-3px;
+	background:url('../image/btnAdd-1.png') 0 100% no-repeat;
+	cursor:pointer;
+}
+#game-fishMan .fishMan-basic .basic-add.active{
+	background:url('../image/btnAdd-2.png') 0 100% no-repeat;
+}
+#game-fishMan .fishMan-basic .basic-score{
+	position:absolute;
+	height:16px;
+	left: 3%;
+	bottom: 6%;
+	letter-spacing:11px;
+	text-align:right;
+	font-size:14px;
+	font-weight:bold;
+	font-family:Arial;
+}
+#game-fishMan .fishMan-fish{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	z-index:1;
+}
+.fishMan-info {
+	position: fixed;
+	font-size: 35px;
+	z-index: 999;
+	transform: translate3d(0, 0, 0) scale(0);
+	letter-spacing: 10px;
+	left: 37%;
+	top: 30%;
+	color: #fff;
+	opacity: 0;
+	text-shadow: 0 0 7px #fff;
+	transition: .3s;
+}
+.fishMan-info.active {
+	opacity: 1;
+	transform: translate3d(0, 0, 0) scale(1);
+}
+#game-fishMan .fishMan-fish .fish{
+	position:absolute;
+	overflow:hidden;
+	z-index: 1;
+}
+#game-fishMan .fishMan-fish .fish img {
+	width: 100%;
+}
+#game-fishMan .fishMan-fish .fish.reverse{
+	-webkit-transform:rotateY(180deg);
+	-mozt-transform:rotateY(180deg);
+	-ms-transform:rotateY(180deg);
+	-o-transform:rotateY(180deg);
+	transform:rotateY(180deg);
+}
+#game-fishMan .fishMan-fish .fish.reverse:hover{
+	transform:translate3D(-20px,10px,0) rotateY(180deg);
+}
+#game-fishMan .fishMan-fish .fish.fish-8 img{
+	position:absolute;
+	top:0;
+	left:0;
+	animation:fish-8 .8s infinite steps(3);
+}
+@keyframes fish-8{
+	from{
+	top:0;
+		}to{
+	top:-300%;
+	}
+}
+#game-fishMan .fishMan-fish .fish.fish-8.catch img{
+	top:-400%;
+	animation:fishCatch-8 .3s infinite steps(3);
+}
+@keyframes fishCatch-8{
+	from{
+	top:-400%;
+		}to{
+	top:-700%;
+	}
+}
+#game-fishMan .fishMan-fish .fish.fish-12 img{
+	position:absolute;
+	top:0;
+	left:0;
+	animation:fish-12 0.8s infinite steps(5);
+}
+@keyframes fish-12{
+	from{
+	top:0;
+		}to{
+	top:-500%;
+	}
+}
+#game-fishMan .fishMan-fish .fish.fish-12.catch img{
+	top:-500%;
+	animation:fishCatch-12 .3s infinite steps(3);
+}
+@keyframes fishCatch-12{
+	from{
+	top:-800%;
+		}to{
+	top:-1100%;
+	}
+}
+#game-fishMan .fishMan-fish .fish.fish-10 img{
+	position:absolute;
+	top:0;
+	left:0;
+	animation:fish-10 0.8s infinite steps(4);
+}
+@keyframes fish-10{
+	from{
+	top:0;
+		}to{
+	top:-400%;
+	}
+}
+#game-fishMan .fishMan-fish .fish.fish-10.catch img{
+	top:-500%;
+	animation:fishCatch-10 .3s infinite steps(4);
+}
+@keyframes fishCatch-10{
+	from{
+	top:-500%;
+		}to{
+	top:-900%;
+	}
+}
+#game-fishMan .fishMan-fish .gold {
+	position:absolute;
+	/* overflow: hidden; */
+	transition:0;
+}
+#game-fishMan .fishMan-fish .gold img {
+	width: 100%;
+}
+#game-fishMan .bullet{
+	position:absolute;
+	display:block;
+	z-index:999;
+}
+#game-fishMan .bullet.dis{
+	animation:dis .4s ease-in;
+}
+@keyframes dis{
+	from{
+	transform:scale(0);
+		}to{
+	transform:scale(1);
+	}
+}
+#game-fishMan .coin{
+	position:absolute;
+	width:60px;
+	height:60px;
+	overflow:hidden;
+	z-index:999;
+}
+#game-fishMan .coin img{
+	position:absolute;
+	width:100%;
+	animation:coin .5s infinite steps(9);
+}
+@keyframes coin{
+	from{
+	top:0;
+		}to{
+	top:-900%;
+	}
+}

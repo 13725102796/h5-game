@@ -1,0 +1,326 @@
+*{
+	padding:0;
+	margin:0;
+}
+body{
+	background-image: repeating-linear-gradient(-45deg,#111113 0,#111113 10px,#1e1e20 10px,#1e1e20 12px);
+}
+html,body{
+	height:100%;
+	moz-user-select: -moz-none;
+	-moz-user-select: none;
+	-o-user-select:none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	font-family: 'Microsoft Yahei';
+}
+.fishMan-info {
+	position: fixed;
+	font-size: 55px;
+	z-index: 999;
+	transform: translate3d(0, 0, 0) scale(0);
+	letter-spacing: 10px;
+	left: 43%;
+	top: 30%;
+	color: #fff;
+	opacity: 0;
+	text-shadow: 0 0 7px #fff;
+	transition: .3s;
+}
+.fishMan-info.active {
+	opacity: 1;
+	transform: translate3d(0, 0, 0) scale(1);
+}
+.game-wrapper{
+	width:100%;
+	height:100%;
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:-o-flex;
+	display:-ms-flex;
+	display:flex;
+	-webkit-align-items:center;
+	-moz-align-items:center;
+	-o-align-items:center;
+	-ms-align-items:center;
+	align-items:center;
+}
+#game-fishMan{
+	position:relative;
+	width:1024px;
+	height:768px;
+	margin:20px auto;
+	background:url('../image/bg.jpg') no-repeat;
+	overflow:hidden;
+	cursor:url('../image/crosshair.ico'),default;
+}
+#game-fishMan .fishMan-basic{
+	position:absolute;
+	width:765px;
+	height:62px;
+	background:url('../image/basic.png') no-repeat;
+	left: 84px;
+	bottom:0;
+	z-index:2;
+}
+#game-fishMan .fishMan-basic .basic-line-box {
+	position:absolute;
+	width: 215PX;
+	height:19px;
+	top:44px;
+	left:543px;
+	left: 71%;
+}
+#game-fishMan .fishMan-basic .basic-line{
+	position:absolute;
+	width:0;
+	height: 100%;
+	border-radius:20px;
+	color:#141414;
+  font-size:12px;
+  line-height:19px;
+  text-align:center;
+  letter-spacing:12px;
+  font-weight:bold;
+	background:url('../image/energy-bar.png') no-repeat;
+	transition:.5s;
+}
+#game-fishMan .fishMan-basic .basic-line.active{
+	animation:line 1s infinite alternate;
+}
+@keyframes line{
+	form{
+		box-shadow:0 0 20px 3px rgba(255,255,255,.5);
+	}to{
+		box-shadow:0 0 32px 6px rgba(255,255,255,.9);
+	}
+}
+#game-fishMan .fishMan-catchAll{
+	position:absolute;
+	width:1024px;
+	height:768px;
+	top:0;
+	left:0;
+	background:url('../image/catch-all.png') 0 -128px no-repeat;
+	z-index:9999;
+	transform:scale(0);
+	opacity:0;
+	transition:transform 1s;
+}
+#game-fishMan .fishMan-catchAll.active{
+	transform:scale(1);
+	opacity:1;
+}
+#game-fishMan .fishMan-catchAll.end{
+	transform:matrix(0,1,1,0,-250,350);
+	opacity:0;
+}
+#game-fishMan .fishMan-basic .basic-battery{
+	position:absolute;
+	width:74px;
+	height:84px;
+	left:390px;
+	top:0;
+	overflow:hidden;
+	background-image:url('../image/cannon1.png');
+	background-repeat: no-repeat;
+	background-position:0 0;
+	-webkit-transition:.3s;
+	-moz-transition:.3s;
+	-o-transition:.3s;
+	-ms-transition:.3s;
+	transition:.3s;
+}
+#game-fishMan .fishMan-basic .basic-battery.active{
+	animation:battery .5s steps(4);
+}
+@keyframes battery{
+	form{
+		background-position:0 0;
+	}
+	to{
+		background-position:0 100%;
+	}
+}
+#game-fishMan .fishMan-basic .basic-plus{
+	position:absolute;
+	width:42px;
+	height:46px;
+	left:344px;
+	bottom:-3px;
+	background:url('../image/btnPlus-1.png') 0 100% no-repeat;
+	cursor:pointer;
+}
+#game-fishMan .fishMan-basic .basic-plus.active{
+	background:url('../image/btnPlus-2.png') 0 100% no-repeat;
+}
+#game-fishMan .fishMan-basic .basic-add{
+	position:absolute;
+	width:42px;
+	height:46px;
+	left:470px;
+	bottom:-3px;
+	background:url('../image/btnAdd-1.png') 0 100% no-repeat;
+	cursor:pointer;
+}
+#game-fishMan .fishMan-basic .basic-add.active{
+	background:url('../image/btnAdd-2.png') 0 100% no-repeat;
+}
+#game-fishMan .fishMan-basic .basic-score{
+	position:absolute;
+	width:140px;
+	height:16px;
+	left:23px;
+	top:45px;
+	letter-spacing:12.5px;
+	text-align:right;
+	font-size:19px;
+	font-weight:bold;
+	font-family:Arial;
+}
+#game-fishMan .fishMan-fish{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	z-index:1;
+}
+#game-fishMan .fishMan-fish .fish{
+	position:absolute;
+	overflow:hidden;
+	z-index: 1;
+	cursor:url('../image/crosshair3.ico'),default;
+}
+
+/* #game-fishMan .fishMan-fish .fish.reverse{
+	-webkit-transform:rotateY(180deg);
+	-mozt-transform:rotateY(180deg);
+	-ms-transform:rotateY(180deg);
+	-o-transform:rotateY(180deg);
+	transform:rotateY(180deg);
+} */
+
+/* #game-fishMan .fishMan-fish .fish.reverse:hover{
+	transform:translate3D(-20px,10px,0) rotateY(180deg);
+} */
+
+#game-fishMan .fishMan-fish .fish.fish-8 img{
+	position:absolute;
+	top:0;
+	left:0;
+	animation:fish-8 0.9s infinite steps(3);
+}
+@keyframes fish-8{
+	from{
+	top:0;
+		}to{
+	top:-300%;
+	}
+}
+#game-fishMan .fishMan-fish .fish.fish-8.catch img{
+	top:-400%;
+	animation:fishCatch-8 .3s infinite steps(3);
+}
+@keyframes fishCatch-8{
+	from{
+	top:-400%;
+		}to{
+	top:-700%;
+	}
+}
+#game-fishMan .fishMan-fish .fish.fish-12 img{
+	position:absolute;
+	top:0;
+	left:0;
+	animation:fish-12 0.7s infinite steps(5);
+}
+@keyframes fish-12{
+	from{
+	top:0;
+		}to{
+	top:-500%;
+	}
+}
+#game-fishMan .fishMan-fish .fish.fish-12.catch img{
+	top:-500%;
+	animation:fishCatch-12 .3s infinite steps(3);
+}
+@keyframes fishCatch-12{
+	from{
+	top:-500%;
+		}to{
+	top:-1100%;
+	}
+}
+#game-fishMan .fishMan-fish .fish.fish-10 img{
+	position:absolute;
+	top:0;
+	left:0;
+	animation:fish-10 0.7s infinite steps(4);
+}
+@keyframes fish-10{
+	from{
+	top:0;
+		}to{
+	top:-400%;
+	}
+}
+#game-fishMan .fishMan-fish .fish.fish-10.catch img{
+	top:-500%;
+	animation:fishCatch-10 .3s infinite steps(4);
+}
+@keyframes fishCatch-10{
+	from{
+	top:-500%;
+		}to{
+	top:-900%;
+	}
+}
+#game-fishMan .fishMan-fish .gold{
+	position:absolute;
+	width:142px;
+	height:147px;
+	transition:0;
+}
+#game-fishMan .bullet{
+	position:absolute;
+	display:block;
+	z-index:999;
+}
+#game-fishMan .bullet.dis{
+	animation:dis .4s ease-in;
+}
+@keyframes dis{
+	from{
+	transform:scale(0);
+		}to{
+	transform:scale(1);
+	}
+}
+#game-fishMan .coin{
+	position:absolute;
+	width:60px;
+	height:60px;
+	overflow:hidden;
+	z-index:999;
+}
+#game-fishMan .coin img{
+	position:absolute;
+	width:100%;
+	animation:coin .5s infinite steps(9);
+}
+@keyframes coin{
+	from{
+	top:0;
+		}to{
+	top:-900%;
+	}
+}
+@media screen and (max-width:450px){
+	.game-wrapper{
+		transform:rotate(90deg);
+	}
+}
