@@ -110,7 +110,9 @@
 					if (prop < 0.78) { // 往上打
 						ty = -50
 						tx = x + dirX * (y + 45) * prop - 11
+						console.log('122')
 					} else {
+						// console.log('111')
 						var tx = dirX === 1 ? screen.h : -50 // 左侧还是右侧
 						var ty = Math.floor(y - x / prop - 45)
 					}

@@ -112,19 +112,36 @@
 		},
     // 渲染初始的炮弹并记录相关值
     renderBullet: function ($bulletBox, screen, dirX, dirY, prop, radian, angle) {
-      var x = screen.h / 2 + eval((dirX * Math.sin(radian) * 60).toFixed(2)) + 22 // 出现的left
-      var	y = screen.w - 40 - eval((dirY * Math.cos(radian) * 60).toFixed(2)) // 出现的top
+      var x = screen.h / 2 + eval((dirX * Math.sin(radian) * 60).toFixed(2)) + 22  // 出现的left
+      var	y = screen.w - 40 - eval((dirY * Math.cos(radian) * 60).toFixed(2)) - 6// 出现的top
       var tx  // 目标left
       var ty  // 目标top
-      if (prop < 0.78) { // 往上打
+			if (prop < 0.78) { // 往上打
+				// y = y + 22
+				// x = x + 22
         tx = x + dirX * (y + 45) * prop - 11
-        ty = -50
+				ty = -50
+				
+				// console.log('1122')
       } else {
-        tx = dirX === 1 ? screen.h : -50 // 左侧还是右侧
-        ty = Math.floor(y - x / prop - 45)
+				
+				tx = dirX === 1 ? screen.h : -50 // 左侧还是右侧
+				console.log(dirX)
+				ty = Math.floor(y - x / prop - 45)
+				if(dirX > 0){
+					// 右侧
+					x = x - 22
+					// y = y + 22
+				} else {
+					// 左侧
+					x = x + 22
+					// y = y - 22
+				}
       }
 
-      var transform = 'rotate(' + dirX * angle + 'deg) scale(0.7)'
+			var transform = 'rotate(' + dirX * angle + 'deg) scale(0.7)'
+			
+			// console.log(x,y)
 
       $bulletBox.css({'left': x, 'top': y, 'transform': transform, 'opacity': 1})
 
@@ -167,7 +184,8 @@
 		// 炮移动中
     animationMove: function (fishList, battert, data, nowXpoint, nowYpoint, i) {
       var transformX = data.progress * data.minusX / 100
-      var transformY = data.progress * data.minusY / 100
+			var transformY = data.progress * data.minusY / 100
+			// console.log(data)
       data.progress += data.progressUp
       data.nowX = data.stX + transformX
       data.nowY = data.stY + transformY
